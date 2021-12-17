@@ -7,8 +7,15 @@
 }
 
 .Product__grid {
-  margin: 0px 10px;
+  margin: auto;
   display: flex;
+  flex: 1;
   flex-flow: row wrap;
-  align-items: space-between;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.Product_item {
+  display: flex;
+  flex: 1;
 }
