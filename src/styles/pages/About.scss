@@ -1,0 +1,26 @@
+.About {
+  display: flex;
+}
+
+.about__hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 50px;
+  max-width: 500px;
+}
+
+.about__hero img {
+  border: solid 1px lightgray;
+  border-radius: 50%;
+}
+
+.about__hero--name {
+  text-align: center;
+}
+
+.about__hero--contact a {
+  text-decoration: none;
+  color: rgb(88, 88, 180);
+}
