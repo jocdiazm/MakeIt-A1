@@ -1,8 +1,9 @@
 import './App.css';
+import Product from './components/Product';
 
 const App = () => (
   <div className="App">
-    <h2>¡Hola MakeitReal! 🚀 </h2>
+    <Product />
   </div>
 );
 
