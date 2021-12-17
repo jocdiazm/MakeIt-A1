@@ -1,23 +1,34 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import propTypes from 'prop-types';
+
 import '../styles/components/Product.scss';
 
-const product = {
-  id: 1,
-  title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-  price: 109.95,
-  description:
-    'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday...',
-  category: "men's clothing",
-  image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-  rating: {
-    rate: 3.9,
-    count: 120,
-  },
-};
+// const product = {
+//   id: 1,
+//   title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
+//   price: 109.95,
+//   description:
+//     'Your perfect pack for everyday
+// use and walks in the forest. Stash
+// your laptop (up to 15 inches) in the padded sleeve, your everyday...',
+//   category: "men's clothing",
+//   image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
+//   rating: {
+//     rate: 3.9,
+//     count: 120,
+//   },
+// };
 
 const offer = true;
 
-const Product = () => {
+const Product = ({ product }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/product/${product.id}`);
+  };
+
   return (
     <div className='product__card'>
       <div className='product__card--img'>
@@ -34,12 +45,16 @@ const Product = () => {
             ¡Offer expires in 0:10!
           </span>
         ) : null}
-        <button disabled={!offer} type='submit'>
+        <button disabled={!offer} type='button' onClick={handleClick}>
           go to deal
         </button>
       </div>
     </div>
   );
+};
+
+Product.propTypes = {
+  product: propTypes.arrayOf([]).isRequired,
 };
 
 export default Product;
