@@ -32,8 +32,12 @@
       }
     ],
     "react/react-in-jsx-scope": "off",
+    "react/jsx-one-expression-per-line": "off",
     "import/no-unresolved": "off",
     "operator-linebreak": "off",
+    "arrow-body-style": 0,
+    "prettier/prettier": ["error", { "singleQuote": true }],
+    "jsx-quotes": ["error", "prefer-single"],
     "react/function-component-definition": [
       2,
       {
