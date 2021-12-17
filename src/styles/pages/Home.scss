@@ -1,7 +1,13 @@
-.Body {
+.Home {
   margin: 0;
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+}
+
+.Product__grid {
+  margin: 0pc 50px;
+  display: flex;
+  flex-flow: row wrap;
 }
