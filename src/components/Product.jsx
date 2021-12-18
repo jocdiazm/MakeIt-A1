@@ -4,22 +4,6 @@ import propTypes from 'prop-types';
 
 import '../styles/components/Product.scss';
 
-// const product = {
-//   id: 1,
-//   title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-//   price: 109.95,
-//   description:
-//     'Your perfect pack for everyday
-// use and walks in the forest. Stash
-// your laptop (up to 15 inches) in the padded sleeve, your everyday...',
-//   category: "men's clothing",
-//   image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-//   rating: {
-//     rate: 3.9,
-//     count: 120,
-//   },
-// };
-
 const offer = true;
 
 const Product = ({ product }) => {
@@ -35,16 +19,16 @@ const Product = ({ product }) => {
         <img src={product.image} alt={product.title} />
       </div>
       <div className='product__card--details'>
-        <h3 className='product__details--title'> {product.title} </h3>
-        <span className='product__details--description'>
-          {product.description}{' '}
+        <h3 className='product__card--title'> {product.title} </h3>
+        <span className='product__card--description'>
+          {product.description.slice(0, 100)}...
         </span>
-        <span className='product__details--price'> $ {product.price}</span>
+        <span className='product__card--price'> $ {product.price}</span>
         {offer ? (
-          <span className='product__details--offer'>
-            ¡Offer expires in 0:10!
-          </span>
-        ) : null}
+          <span className='product__card--offer'>¡Offer expires in 0:10!</span>
+        ) : (
+          <span className='product__card--offer_expired'>Offer expired :S</span>
+        )}
         <button disabled={!offer} type='button' onClick={handleClick}>
           go to deal
         </button>

@@ -23,7 +23,7 @@
   background-color: white;
 }
 
-.product__details--description {
+.product__card--description {
   color: #8d8d8d;
   line-height: 1.7em;
   font-size: 14px;
@@ -32,7 +32,7 @@
   text-overflow: ellipsis;
 }
 
-.product__details--title {
+.product__card--title {
   font-size: 18px;
   font-weight: bold;
   color: #474747;
@@ -48,12 +48,12 @@
   border-radius: 9px 0px 0px 9px;
 }
 
-.product__details--price {
+.product__card--price {
   font-size: 18px;
   font-weight: bold;
 }
 
-img {
+.product__card--img > img {
   width: 150px;
   height: auto;
   margin: 10px 20px;
@@ -61,12 +61,18 @@ img {
   background-size: cover;
 }
 
-.product__details--offer {
+.product__card--offer {
   line-height: 1.7em;
   letter-spacing: 0.12rem;
   font-size: 14px;
 }
 
+.product__card--offer_expired {
+  line-height: 1.7em;
+  letter-spacing: 0.12rem;
+  font-size: 14px;
+  color: red;
+}
 .product__card--details > button {
   margin: 0px 5px 5px 2px;
   width: 150px;
