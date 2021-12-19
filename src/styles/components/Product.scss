@@ -41,11 +41,20 @@
 
 .product__card--img {
   display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
   background-color: rgb(228, 228, 228);
   align-items: center;
   height: 320px;
   margin-right: 10px;
   border-radius: 9px 0px 0px 9px;
+}
+.product__card--rating {
+  display: inline-block;
+  text-align: center;
+  color: gray;
+  font-weight: bold;
+  font-size: 12px;
 }
 
 .product__card--price {
