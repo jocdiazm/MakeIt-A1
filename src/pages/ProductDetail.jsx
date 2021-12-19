@@ -1,27 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import Countdown from '../components/Countdown';
 
 import '../styles/pages/ProductDetail.scss';
-
-const offer = true;
+import { useProduct } from '../components/ProductContext';
 
 const ProductDetail = () => {
-  const [product, setProduct] = useState([]);
+  const { offer, products } = useProduct();
   const { id } = useParams();
+  const product = products[id - 1];
+  const productOffer = offer[id];
   const navigate = useNavigate();
 
   const handleClick = () => {
     navigate('/');
   };
 
-  useEffect(() => {
-    const getProduct = async () => {
-      const res = await axios.get(`https://fakestoreapi.com/products/${id}`);
-      setProduct(res.data);
-    };
-    getProduct();
-  }, []);
   return (
     <div className='item_layout'>
       <h1 className='item_layout--title'> {product.title} </h1>
@@ -34,12 +27,20 @@ const ProductDetail = () => {
             {product.description}{' '}
           </span>
           <span className='product__item--price'> $ {product.price}</span>
-          {offer ? (
+          {productOffer.isActive ? (
             <span className='product__item--offer'>
-              ¡Offer expires in 0:10!
+              ¡Offer expires in <Countdown productId={product.id} />!
             </span>
-          ) : null}
-          <button disabled={!offer} type='button' onClick={handleClick}>
+          ) : (
+            <span className='product__card--offer_expired'>
+              Offer already expired 😢
+            </span>
+          )}
+          <button
+            disabled={!productOffer.isActive}
+            type='button'
+            onClick={handleClick}
+          >
             Add to cart
           </button>
         </div>
