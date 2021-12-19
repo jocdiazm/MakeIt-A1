@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { Rating } from 'react-simple-star-rating';
 import Countdown from '../components/Countdown';
 
 import '../styles/pages/ProductDetail.scss';
@@ -8,6 +9,7 @@ const ProductDetail = () => {
   const { offer, products } = useProduct();
   const { id } = useParams();
   const product = products[id - 1];
+  const { rating } = product;
   const productOffer = offer[id];
   const navigate = useNavigate();
 
@@ -21,6 +23,18 @@ const ProductDetail = () => {
       <div className='product__item'>
         <div className='product__item--img'>
           <img src={product.image} alt={product.title} />
+          <div className='product__detail--rating'>
+            <Rating
+              initialValue={rating.rate}
+              readonly
+              allowHalfIcon
+              size={24}
+              allowHover
+            />{' '}
+            {rating.rate}
+            <br />
+            <span>{rating.count} reviews </span>
+          </div>
         </div>
         <div className='product__item--container'>
           <span className='product__item--description'>

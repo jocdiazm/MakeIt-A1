@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { Rating } from 'react-simple-star-rating';
 import propTypes from 'prop-types';
 import Countdown from './Countdown';
 import { useProduct } from './ProductContext';
@@ -9,6 +10,7 @@ const Product = ({ product }) => {
   const navigate = useNavigate();
   const { offer } = useProduct();
   const productOffer = offer[product.id];
+  const { rating } = product;
   const handleClick = () => {
     navigate(`/product/${product.id}`);
   };
@@ -17,6 +19,18 @@ const Product = ({ product }) => {
     <div className='product__card'>
       <div className='product__card--img'>
         <img src={product.image} alt={product.title} />
+        <div className='product__card--rating'>
+          <Rating
+            initialValue={rating.rate}
+            readonly
+            allowHalfIcon
+            size={20}
+            allowHover
+          />{' '}
+          {rating.rate}
+          <br />
+          <span>{rating.count} reviews </span>
+        </div>
       </div>
       <div className='product__card--details'>
         <h3 className='product__card--title'> {product.title} </h3>
