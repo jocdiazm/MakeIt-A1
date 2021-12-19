@@ -71,7 +71,8 @@
   line-height: 1.7em;
   letter-spacing: 0.12rem;
   font-size: 14px;
-  color: red;
+  color: rgb(134, 45, 45);
+  font-weight: bold;
 }
 .product__card--details > button {
   margin: 0px 5px 5px 2px;
@@ -90,12 +91,12 @@
   background-color: grey;
 }
 
-.product__card--details > button:hover {
+.product__card--details > button:hover:enabled {
   cursor: pointer;
   box-shadow: 0px 10px 10px -5px rgba(30, 144, 255, 40%);
   transform: scale(1.03);
 }
-.product__card--details > button:active {
+.product__card--details > button:active:enabled {
   box-shadow: 0px 4px 8px rgba(30, 144, 255, 30%);
   transform: scale(0.98);
 }

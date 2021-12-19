@@ -1,14 +1,14 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import propTypes from 'prop-types';
+import Countdown from './Countdown';
+import { useProduct } from './ProductContext';
 
 import '../styles/components/Product.scss';
 
-const offer = true;
-
 const Product = ({ product }) => {
   const navigate = useNavigate();
-
+  const { offer } = useProduct();
+  const productOffer = offer[product.id];
   const handleClick = () => {
     navigate(`/product/${product.id}`);
   };
@@ -24,12 +24,22 @@ const Product = ({ product }) => {
           {product.description.slice(0, 100)}...
         </span>
         <span className='product__card--price'> $ {product.price}</span>
-        {offer ? (
-          <span className='product__card--offer'>¡Offer expires in 0:10!</span>
+        {productOffer?.isActive ? (
+          <span className='product__card--offer'>
+            ¡Offer expires in{' '}
+            <strong>
+              <Countdown productId={product.id} />
+            </strong>
+            !
+          </span>
         ) : (
-          <span className='product__card--offer_expired'>Offer expired :S</span>
+          <span className='product__card--offer_expired'>Offer expired </span>
         )}
-        <button disabled={!offer} type='button' onClick={handleClick}>
+        <button
+          disabled={!productOffer?.isActive}
+          type='button'
+          onClick={handleClick}
+        >
           go to deal
         </button>
       </div>
@@ -38,7 +48,18 @@ const Product = ({ product }) => {
 };
 
 Product.propTypes = {
-  product: propTypes.arrayOf([]).isRequired,
+  product: propTypes.shape({
+    id: propTypes.number,
+    title: propTypes.string,
+    price: propTypes.number,
+    description: propTypes.string,
+    category: propTypes.string,
+    image: propTypes.string,
+    rating: propTypes.shape({
+      rate: propTypes.number,
+      count: propTypes.number,
+    }),
+  }).isRequired,
 };
 
 export default Product;

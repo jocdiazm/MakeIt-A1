@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import Product from '../components/Product';
+import { useProduct } from '../components/ProductContext';
 
 import '../styles/pages/Home.scss';
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const getProducts = async () => {
-      const res = await axios.get('https://fakestoreapi.com/products');
-      setProducts(res.data);
-    };
-    getProducts();
-  }, []);
+  const { products } = useProduct();
   return (
     <div>
       <div className='Home'>
@@ -21,7 +13,7 @@ const Home = () => {
             .filter((p) => p.category.includes("men's clothing"))
             .slice(0, 9)
             .map((product) => (
-              <Product product={product} />
+              <Product key={product.id} product={product} />
             ))}
         </div>
       </div>
