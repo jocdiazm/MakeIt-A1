@@ -7,7 +7,7 @@ const profileImg =
 const About = () => {
   return (
     <div>
-      <section className='About'>
+      <section className='about'>
         <div className='about__hero'>
           <img src={profileImg} alt='José Díaz' />
           <div className='about__hero--info'>
