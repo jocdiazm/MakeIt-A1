@@ -1,3 +1,4 @@
+$screen-small: 450px;
 .footer {
   display: flex;
   flex-direction: row;
@@ -10,6 +11,9 @@
   min-height: 75px;
   max-height: 75px;
   margin-top: 25px;
+  @media only screen and (max-width: $screen-small) {
+    font-size: 12px;
+  }
 
   & > img {
     width: 120px;

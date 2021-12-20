@@ -22,25 +22,25 @@ const ProductDetail = () => {
       <h1 className='item_layout--title'> {product.title} </h1>
       <div className='product__item'>
         <div className='product__item--img'>
-          <img src={product.image} alt={product.title} />
+          <img src={product?.image} alt={product.title} />
           <div className='product__item--rating'>
             <Rating
-              initialValue={rating.rate}
+              initialValue={rating?.rate}
               readonly
               allowHalfIcon
               size={24}
               allowHover
             />{' '}
-            {rating.rate}
+            {rating?.rate}
             <br />
-            <span>{rating.count} reviews </span>
+            <span>{rating?.count} reviews </span>
           </div>
         </div>
         <div className='product__item--container'>
           <span className='product__item--description'>
-            {product.description}{' '}
+            {product?.description}{' '}
           </span>
-          <span className='product__item--price'> $ {product.price}</span>
+          <span className='product__item--price'> $ {product?.price}</span>
           {productOffer.isActive ? (
             <span className='product__item--offer'>
               ¡Offer expires in <Countdown productId={product.id} />!
