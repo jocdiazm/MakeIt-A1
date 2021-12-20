@@ -10,15 +10,15 @@
   min-height: 75px;
   max-height: 75px;
   margin-top: 25px;
-}
 
-img {
-  width: 120px;
-  height: auto;
-  padding-left: 10px;
-}
-.hero {
-  text-decoration: none;
-  font-weight: light;
-  color: gray;
+  & > img {
+    width: 120px;
+    height: auto;
+    padding-left: 10px;
+  }
+  .hero {
+    text-decoration: none;
+    font-weight: light;
+    color: gray;
+  }
 }

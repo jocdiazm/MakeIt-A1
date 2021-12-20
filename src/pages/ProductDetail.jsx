@@ -23,7 +23,7 @@ const ProductDetail = () => {
       <div className='product__item'>
         <div className='product__item--img'>
           <img src={product.image} alt={product.title} />
-          <div className='product__detail--rating'>
+          <div className='product__item--rating'>
             <Rating
               initialValue={rating.rate}
               readonly
@@ -46,7 +46,7 @@ const ProductDetail = () => {
               ¡Offer expires in <Countdown productId={product.id} />!
             </span>
           ) : (
-            <span className='product__card--offer_expired'>
+            <span className='product__item--offer_expired'>
               Offer already expired 😢
             </span>
           )}
