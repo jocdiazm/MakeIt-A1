@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import { useState, createContext, useContext, useEffect } from 'react';
+import { trackPromise } from 'react-promise-tracker';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { randomTimer } from '../utils/timerUtils';
@@ -14,7 +15,9 @@ export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const getProducts = async () => {
-      const res = await axios.get('https://fakestoreapi.com/products');
+      const res = await trackPromise(
+        axios.get('https://fakestoreapi.com/products'),
+      );
       const storeProducts = await res.data;
       const offerProducts = await storeProducts.reduce(
         (acc, cur) => ({
