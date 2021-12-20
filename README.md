@@ -1,12 +1,22 @@
 ## Diseño de una página de mercado
 
+### Instrucciones
+```sh
+git clone git@github.com:jocdiazm/MakeIt-A1.git 
+git checkout develop
+npm install
+npm start
+```
+
 El resultado de este diseño se puede visualizar en el siguiente demo:
 
-**Despliegue en Netelify**
+### Despliegue en Netlify
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/78a52154-db01-4c4f-b565-d16bf24052d4/deploy-status)](https://app.netlify.com/sites/makeit-assessment1-jcdiaz/deploys)
 
 [Demo en Netlify](https://makeit-assessment1-jcdiaz.netlify.app/)
 
-**Repositorio de Github:**
+### Repositorio de Github
 
 [Rama Develop en - jocdiazm/MakeIt-A1](https://github.com/jocdiazm/MakeIt-A1/tree/develop)
 
