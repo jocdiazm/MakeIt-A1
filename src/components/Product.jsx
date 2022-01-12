@@ -1,15 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating';
 import propTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+
 import Countdown from './Countdown';
-import { useProduct } from './ProductContext';
 
 import '../styles/components/Product.scss';
 
 const Product = ({ product }) => {
   const navigate = useNavigate();
-  const { offer } = useProduct();
-  const productOffer = offer[product.id];
+
+  const offers = useSelector((state) => state.offers);
+
+  const productOffer = offers[product.id];
   const { rating } = product;
   const handleClick = () => {
     navigate(`/product/${product.id}`);

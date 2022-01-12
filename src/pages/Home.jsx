@@ -1,10 +1,19 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Product from '../components/Product';
-import { useProduct } from '../components/ProductContext';
+
+import { fetchProducts } from '../store/actions';
 
 import '../styles/pages/Home.scss';
 
 const Home = () => {
-  const { products } = useProduct();
+  const products = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+
+  useEffect(async () => {
+    dispatch(fetchProducts());
+  }, []);
+
   return (
     <div>
       <div className='Home'>
