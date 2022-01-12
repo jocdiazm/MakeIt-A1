@@ -4,14 +4,14 @@ import {
   SHOW_LOADER,
   HIDE_LOADER,
   ERROR_MESSAGE,
-  SET_OFFER,
+  SET_OFFERS,
   UPDATE_OFFER,
 } from './types';
 
 const initialState = {
   products: [],
   offers: {},
-  isLoading: false,
+  isLoading: true,
   message: '',
 };
 
@@ -27,12 +27,17 @@ function reducer(state = initialState, action) {
         ...state,
         offers: { ...state.offers, [action.payload.id]: action.payload.offer },
       };
-    case SET_OFFER:
+    case SET_OFFERS:
       return {
         ...state,
         offers: action.payload,
       };
-
+    case HIDE_LOADER:
+    case SHOW_LOADER:
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
     default:
       return state;
   }

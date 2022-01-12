@@ -6,10 +6,7 @@ import Countdown from '../components/Countdown';
 import '../styles/pages/ProductDetail.scss';
 
 const ProductDetail = () => {
-  // const { offer, products } = useProduct();
-
   const { products, offers } = useSelector((state) => state);
-
   const { id } = useParams();
   const product = products[id - 1];
   const { rating } = product;
