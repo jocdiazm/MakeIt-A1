@@ -1,6 +1,7 @@
 .Navbar {
   display: flex;
   flex-direction: row;
+  background-color: rgba(197, 197, 197, 0.28);
   align-items: center;
   min-height: 75px;
   max-height: 75px;
@@ -11,4 +12,10 @@
   text-decoration: none;
   font-size: 24px;
   font-weight: bold;
+  text-decoration: none;
+  color: rgba(0, 110, 147, 0.95);
+  & .text-link {
+    color: inherit;
+    text-decoration: inherit;
+  }
 }
