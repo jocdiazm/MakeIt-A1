@@ -1,6 +1,7 @@
 import propTypes from 'prop-types';
 import { useState, useEffect, useRef } from 'react';
-import { useProduct } from './ProductContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateOffer } from '../store/actions';
 
 import '../styles/components/Countdown.scss';
 
@@ -12,8 +13,10 @@ const formatTime = (seconds) => {
 };
 
 const Countdown = ({ productId }) => {
-  const { offer, setOffer } = useProduct();
-  const { seconds } = offer[productId];
+  const offers = useSelector((state) => state.offers);
+  const dispatch = useDispatch();
+
+  const { seconds } = offers[productId];
   const [timeLeft, setTimeLeft] = useState(seconds);
 
   // Add a ref to store the interval id
@@ -30,12 +33,16 @@ const Countdown = ({ productId }) => {
   useEffect(() => {
     if (timeLeft <= 0) {
       clearInterval(intervalRef.current);
-      setOffer({ ...offer, [productId]: { isActive: false, seconds: 0 } });
+      dispatch(
+        updateOffer({ id: productId, offer: { isActive: false, seconds: 0 } }),
+      );
     } else {
-      setOffer({
-        ...offer,
-        [productId]: { isActive: true, seconds: timeLeft },
-      });
+      dispatch(
+        updateOffer({
+          id: productId,
+          offer: { isActive: true, seconds: timeLeft },
+        }),
+      );
     }
   }, [timeLeft]);
   return <span>{formatTime(timeLeft)}</span>;
