@@ -1,19 +1,11 @@
 /* eslint-disable indent */
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Product from '../components/Product';
-
-import { fetchProducts } from '../store/actions';
 
 import '../styles/pages/Home.scss';
 
 const Home = () => {
   const { isLoading, products } = useSelector((state) => state);
-  const dispatch = useDispatch();
-
-  useEffect(async () => {
-    dispatch(fetchProducts());
-  }, []);
 
   return (
     <div>
